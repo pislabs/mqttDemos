@@ -1,6 +1,6 @@
 const mqtt = require("mqtt");
 
-const serverHost = "mqtt://mqtt.eclipse.org";
+const serverHost = "mqtt://mqtt.eclipseprojects.io";
 
 console.log(`正在连接...${serverHost}`);
 
