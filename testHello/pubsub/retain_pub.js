@@ -1,13 +1,12 @@
 const mqtt = require("mqtt");
 
 const serverHost = "mqtt://127.0.0.1:1883";
+console.log(`正在连接...${serverHost}`);
 
 const client = mqtt.connect(serverHost, {
   clientId: "mqtt_sample_publisher_1",
   clean: false,
 });
-
-console.log(`正在连接...${serverHost}`);
 
 client.on("connect", (connack) => {
   if (connack.returnCode == 0) {

@@ -1,6 +1,7 @@
 const mqtt = require("mqtt");
 
 const serverHost = "mqtt://127.0.0.1:1883";
+console.log(`正在连接...${serverHost}`);
 
 const client = mqtt.connect(serverHost, {
   clientId: "mqtt_sample_subscriber_id_chapter_8",
