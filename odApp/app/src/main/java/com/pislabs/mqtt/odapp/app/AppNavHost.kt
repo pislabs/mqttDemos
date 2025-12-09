@@ -1,4 +1,4 @@
-package com.pislabs.mqtt.odapp.navigation
+package com.pislabs.mqtt.odapp.app
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
@@ -10,12 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 //import com.pislabs.mqtt.odapp.feature.auth.navigation.authGraph
-//import com.pislabs.mqtt.odapp.feature.common.navigation.commonGraph
+import com.pislabs.mqtt.odapp.feature.common.navigation.commonGraph
 //import com.pislabs.mqtt.odapp.feature.cs.navigation.csGraph
 //import com.pislabs.mqtt.odapp.feature.feedback.navigation.feedbackGraph
 //import com.pislabs.mqtt.odapp.feature.goods.navigation.goodsGraph
-//import com.pislabs.mqtt.odapp.feature.launch.navigation.launchGraph
-//import com.pislabs.mqtt.odapp.feature.main.navigation.mainGraph
+import com.pislabs.mqtt.odapp.feature.launch.navigation.launchGraph
+import com.pislabs.mqtt.odapp.navigation.AppNavigator
+import com.pislabs.mqtt.odapp.navigation.handleNavigationEvent
+import com.pislabs.mqtt.odapp.feature.main.navigation.mainGraph
 //import com.pislabs.mqtt.odapp.feature.market.navigation.marketGraph
 //import com.pislabs.mqtt.odapp.feature.order.navigation.orderGraph
 //import com.pislabs.mqtt.odapp.feature.user.navigation.userGraph
@@ -79,20 +81,20 @@ fun AppNavHost(
                 )
             }
         ) {
-//            // 只调用模块级Graph函数，大大减少了冲突可能性
-//            mainGraph(
-//                navController,
-//                this@SharedTransitionLayout
-//            )
+            launchGraph(navController, this@SharedTransitionLayout)
+            // 只调用模块级Graph函数，大大减少了冲突可能性
+            mainGraph(
+                navController,
+                this@SharedTransitionLayout
+            )
+            commonGraph(navController)
 //            goodsGraph(navController)
 //            authGraph(navController)
 //            userGraph(navController, this@SharedTransitionLayout)
 //            orderGraph(navController)
 //            csGraph(navController)
-//            commonGraph(navController)
 //            marketGraph(navController)
 //            feedbackGraph(navController)
-//            launchGraph(navController, this@SharedTransitionLayout)
         }
     }
 }

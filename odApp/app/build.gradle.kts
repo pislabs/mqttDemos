@@ -116,6 +116,13 @@ dependencies {
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.okhttp.logging)
 
+    // 图片加载框架
+    implementation(libs.coil.compose)
+
+    // lottie 动画
+    // https://airbnb.io/lottie/#/android-compose
+    implementation(libs.lottie.compose)
+
     // 通过OkHttp的拦截器机制
     // 实现在应用通知栏显示网络请求功能
     // https://github.com/ChuckerTeam/chucker

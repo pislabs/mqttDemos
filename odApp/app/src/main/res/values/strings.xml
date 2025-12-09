@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">objectDetectionApp</string>
+    <string name="app_copyright">© 2025 Rayl &amp; Pislabs Mqtt</string>
+
+    <!-- 页面标题 -->
+    <string name="settings_title">设置</string>
+    <string name="contributors_title">贡献者</string>
+    <string name="about_title">关于我们</string>
+    <string name="privacy_policy_title">隐私政策</string>
+    <string name="user_agreement_title">用户协议</string>
+    <string name="web_title">网页</string>
 
     <!-- Splash Page -->
     <string name="app_name_splash">OdApp</string>
-    <string name="app_copyright">© 2025 Rayl &amp; Pislabs Mqtt</string>
 
     <!-- 引导页 -->
     <string name="guide_skip">跳过</string>
@@ -11,16 +19,257 @@
     <string name="guide_continue">继续</string>
 
     <!-- 引导页内容 -->
-    <string name="guide_page_1_title">青商城 - 开源电商学习项目</string>
-    <string name="guide_page_1_desc">100% Kotlin 开发的现代化电商应用\n完全开源免费，助力开发者快速成长\n提供完整的代码参考和学习资源</string>
+    <string name="guide_page_1_title">Mqtt - 轻量级的发布/订阅消息传输协议</string>
+    <string name="guide_page_1_desc">专为物联网（IoT）和机器对机器（M2M）通信而设计，尤其适用于低带宽、高延迟或不稳定的网络环境</string>
 
-    <string name="guide_page_2_title">声明式 UI 新体验</string>
-    <string name="guide_page_2_desc">基于 Jetpack Compose 构建流畅界面\n采用 MVVM + Clean Architecture 架构\nHilt、Coroutines、Flow 等主流技术全整合</string>
+    <string name="guide_page_2_title">PyTorch - 开源的机器学习框架</string>
+    <string name="guide_page_2_desc">它主要用于深度学习应用，提供了强大的张量计算（类似于 NumPy）和自动微分功能，非常适合构建和训练神经网络</string>
 
-    <string name="guide_page_3_title">完整电商业务流程</string>
-    <string name="guide_page_3_desc">用户认证、商品展示、搜索分类\n购物车管理、订单支付全流程实现\n贴近真实商业场景的学习案例</string>
+    <string name="guide_page_3_title">ESP32 - 片上系统（SoC）微控制器</string>
+    <string name="guide_page_3_desc">基于Tensilica Xtensa LX内核，广泛应用于物联网（IoT）、智能家居、可穿戴设备等领域</string>
 
-    <string name="guide_page_4_title">模块化架构设计</string>
-    <string name="guide_page_4_desc">参考 Google Now in Android 最佳实践\n高内聚低耦合，便于维护与扩展\n适合学习与二次开发的优质项目</string>
+    <string name="guide_page_4_title">STM32 - 32 位微控制器（MCU）家族</string>
+    <string name="guide_page_4_desc"> 基于 ARM Cortex-M 内核，是目前市面上最主流的通用 MCU 系列之一</string>
 
+    <!-- 底部导航 -->
+    <string name="home">主页</string>
+    <string name="category">分类</string>
+    <string name="cart">购物车</string>
+    <string name="me">我的</string>
+
+    <!-- 购物车 -->
+    <string name="complete">完成</string>
+    <string name="delete_count">删除(%d)</string>
+    <string name="select_all">全选</string>
+    <string name="total">合计:</string>
+    <string name="price_format">¥%.2f</string>
+    <string name="settle_account">结算</string>
+    <string name="settle_account_count">结算(%d)</string>
+    <string name="cart_empty">购物车空空如也~</string>
+    <string name="go_shopping">去逛逛</string>
+
+    <!-- 首页 -->
+    <string name="search_features">搜索功能</string>
+    <string name="search_goods">搜索商品</string>
+    <string name="recommend_goods">推荐商品</string>
+    <string name="all_goods">全部商品</string>
+    <string name="flash_sale">限时精选</string>
+    <string name="view_all">查看全部</string>
+    <string name="receive">领取</string>
+
+    <!-- 个人中心 -->
+    <string name="not_logged_in">未登录</string>
+    <string name="click_to_login">点击登录账号</string>
+    <string name="phone_number">手机号</string>
+    <string name="member">会员</string>
+    <string name="member_benefits">会员立享5大权益!</string>
+    <string name="activate_now">立即开通</string>
+    <string name="my_orders">我的订单</string>
+    <string name="pending_payment">待付款</string>
+    <string name="pending_shipment">待发货</string>
+    <string name="pending_receipt">待收货</string>
+    <string name="pending_review">待评价</string>
+    <string name="refund_after_sale">退款/售后</string>
+    <string name="my_footprint">我的足迹</string>
+    <string name="coupons">优惠券</string>
+    <string name="shipping_address">收货地址</string>
+    <string name="online_customer_service">在线客服</string>
+    <string name="feedback">意见反馈</string>
+    <string name="about_us">关于我们</string>
+    <string name="settings">设置</string>
+
+    <!-- 分类页面 -->
+    <string name="category_all">全部分类</string>
+    <string name="category_empty">暂无分类</string>
+
+    <!-- Toast提示 -->
+    <string name="please_select_settlement_goods">请选择要结算的商品</string>
+    <string name="get_selected_goods_failed">获取选中商品失败</string>
+
+    <!-- Empty States -->
+    <string name="empty_cart">购物车是空的</string>
+    <string name="empty_cart_subtitle">快去添加商品吧</string>
+    <string name="empty_cart_btn">去逛逛</string>
+    <string name="empty_data">暂无数据</string>
+    <string name="empty_data_subtitle">暂时没有相关内容</string>
+    <string name="empty_error">加载失败</string>
+    <string name="empty_error_subtitle">页面加载出现了问题</string>
+    <string name="empty_network">网络连接失败</string>
+    <string name="empty_network_subtitle">请检查网络连接后重试</string>
+    <string name="click_retry">重新加载</string>
+
+    <!-- Loading States -->
+    <string name="loading">加载中...</string>
+    <string name="load_more_pull">上拉加载更多</string>
+    <string name="load_more_loading">正在加载...</string>
+    <string name="load_more_success">加载成功</string>
+    <string name="load_more_error">加载失败</string>
+    <string name="load_more_error_retry">加载失败，点击重试</string>
+    <string name="load_more_no_more">没有更多了</string>
+    <string name="refresh_pull_down">下拉刷新</string>
+    <string name="refresh_release">松开刷新</string>
+    <string name="refresh_refreshing">刷新中...</string>
+    <string name="refresh_complete">刷新完成</string>
+
+    <!-- Common Actions -->
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="save">保存</string>
+    <string name="submit">提交</string>
+    <string name="search">搜索</string>
+    <string name="search_hint">输入内容进行搜索</string>
+    <string name="retry">重试</string>
+    <string name="selected">已选择</string>
+    <string name="unselected">未选择</string>
+
+    <!-- Coupon -->
+    <string name="coupon_expired">已过期</string>
+    <string name="coupon_used">已使用</string>
+    <string name="coupon_available">可使用</string>
+    <string name="coupon_conditions">满%1$d元可用</string>
+    <string name="coupon_no_conditions">无门槛</string>
+    <string name="coupon_valid_date">有效期: %1$s - %2$s</string>
+    <string name="coupon_valid_until">有效期至 %1$s</string>
+    <string name="coupon_receive">立即领取</string>
+    <string name="coupon_received">已领取</string>
+    <string name="coupon_use">去使用</string>
+    <string name="coupon_insufficient">不满足条件</string>
+    <string name="coupon_usage_instructions">使用说明</string>
+    <string name="coupon_modal_title">领取优惠券</string>
+
+    <!-- Address -->
+    <string name="address_default">默认</string>
+    <string name="address_edit">编辑</string>
+    <string name="address_delete">删除</string>
+    <string name="address_not_selected">您还没有选择收货地址</string>
+    <string name="address_add_hint">点击添加收货地址</string>
+
+    <!-- Goods -->
+    <string name="goods_sold">已售%d件</string>
+    <string name="goods_select">选择</string>
+    <string name="goods_spec">规格</string>
+    <string name="goods_quantity">数量</string>
+
+    <!-- Spec -->
+    <string name="spec_category">规格分类</string>
+    <string name="please_select">请选择</string>
+    <string name="spec_selected">已选</string>
+    <string name="spec_not_selected">未选择</string>
+    <string name="spec_stock">库存</string>
+
+    <!-- Rate -->
+    <string name="rate_star">评分星星</string>
+
+    <!-- Image -->
+    <string name="default_avatar">默认头像</string>
+    <string name="image_load_error">图片加载失败</string>
+    <string name="selected_image">选择的图片</string>
+    <string name="add_image">添加图片</string>
+
+    <!-- Modal -->
+    <string name="modal_close">关闭</string>
+    <string name="modal_select_spec">选择规格</string>
+    <string name="modal_add_to_cart">加入购物车</string>
+    <string name="modal_buy_now">立即购买</string>
+
+
+    <string name="price">价格</string>
+    <string name="quantity">数量</string>
+
+    <!-- 关于我们页面 -->
+    <string name="about_app_name">应用名称</string>
+    <string name="about_version">版本号</string>
+    <string name="about_version_code">版本代码</string>
+    <string name="about_copyright">© 2025 Rayl &amp; Pislabs Mqtt Contributors</string>
+
+    <!-- 关于我们 - 开发者 -->
+    <string name="about_developer">开发者</string>
+    <string name="about_developer_email">rayl6.ent@gmail.com</string>
+    <string name="about_developer_name">Rayl</string>
+
+    <!-- 关于我们 - 项目地址 -->
+    <string name="about_section_project">项目地址</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_github_url">https://github.com/pislabs/mqttDemos</string>
+    <string name="about_gitee">Gitee</string>
+    <string name="about_gitee_url">https://gitee.com/pislabs/mqttDemos</string>
+
+    <!-- 关于我们 - 相关资源 -->
+    <string name="about_section_resources">相关资源</string>
+    <string name="about_api_doc">API 文档</string>
+    <string name="about_api_doc_desc">查看项目后端接口的详细定义</string>
+    <string name="about_demo_download">Demo 下载</string>
+    <string name="about_demo_download_desc">不定时更新，可能不会同步最新代码变更</string>
+    <string name="about_icon_source">图标来源</string>
+    <string name="about_icon_source_desc">项目使用的图标库来自图鸟 Icon</string>
+
+    <!-- 关于我们 - 讨论 -->
+    <string name="about_section_discussion">讨论</string>
+    <string name="about_github_discussion">GitHub 讨论区</string>
+    <string name="about_github_discussion_desc">在 GitHub 上参与项目讨论</string>
+    <string name="about_qq_group">QQ 交流群</string>
+    <string name="about_wechat_group">微信交流群</string>
+
+    <!-- 关于我们 - 支持与帮助 -->
+    <string name="about_section_support">支持与帮助</string>
+    <string name="about_translation">翻译</string>
+    <string name="about_translation_desc">帮助我将应用翻译为您的语言</string>
+    <string name="about_support">支持</string>
+    <string name="about_support_desc">您可以在此赞助以支持我</string>
+    <string name="about_help">帮助</string>
+    <string name="about_help_desc">有任何问题或建议，欢迎提交 Issue</string>
+
+    <!-- 关于我们 - 其他 -->
+    <string name="about_section_other">其他</string>
+    <string name="about_citation">引用</string>
+    <string name="about_citation_desc">项目中使用的第三方库和资源致谢</string>
+    <string name="about_user_agreement">用户协议</string>
+    <string name="about_privacy_policy">隐私政策</string>
+    <string name="about_open_source_license">开源许可</string>
+
+    <!-- 设置页面 -->
+    <string name="settings_account_security">账号与安全</string>
+
+    <!-- 设置 - 外观与语言 -->
+    <string name="settings_section_appearance">外观与语言</string>
+    <string name="settings_dark_mode">夜间模式</string>
+    <string name="settings_dark_mode_follow_system">跟随系统</string>
+    <string name="settings_dark_mode_light">浅色模式</string>
+    <string name="settings_dark_mode_dark">深色模式</string>
+    <string name="settings_theme_color">主题颜色</string>
+    <string name="settings_theme_color_default">木槿紫</string>
+    <string name="settings_theme_color_purple">幻彩紫</string>
+    <string name="settings_theme_color_green">清爽绿</string>
+    <string name="settings_theme_color_orange">暖日橙</string>
+    <string name="settings_theme_color_red">能量红</string>
+    <string name="settings_dynamic_color">动态主题色</string>
+    <string name="settings_dynamic_color_desc">开启后应用主题色会同步系统壁纸颜色</string>
+    <string name="settings_language">语言切换</string>
+    <string name="settings_language_chinese">中文</string>
+
+    <!-- 设置 - 隐私与协议 -->
+    <string name="settings_section_privacy">隐私与协议</string>
+
+    <!-- 设置 - 其他 -->
+    <string name="settings_section_other">其他</string>
+    <string name="settings_hide_splash">不展示启动页</string>
+    <string name="settings_hide_splash_desc">打开后进入应用将跳过启动页</string>
+    <string name="settings_app_guide">应用引导</string>
+
+    <!-- 设置 - 通用 -->
+    <string name="settings_section_general">通用</string>
+    <string name="settings_clear_cache">清除缓存</string>
+    <string name="settings_cache_size">13.24MB</string>
+    <string name="settings_feedback">意见反馈</string>
+    <string name="settings_about_app">关于应用</string>
+
+    <!-- WebView页面 -->
+    <string name="web_menu_refresh">刷新</string>
+    <string name="web_menu_open_browser">用浏览器打开</string>
+    <string name="web_more_options">更多选项</string>
+
+    <!-- 依赖弹窗 -->
+    <string name="dependency_modal_title">引用致谢</string>
 </resources>

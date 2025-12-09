@@ -45,12 +45,12 @@ object GuidePageProvider {
         GuidePageData(
             title = context.getString(R.string.guide_page_3_title),
             description = context.getString(R.string.guide_page_3_desc),
-            image = R.drawable.ic_add_to_cart
+            image = R.drawable.ic_dev_productivity
         ),
         GuidePageData(
             title = context.getString(R.string.guide_page_4_title),
             description = context.getString(R.string.guide_page_4_desc),
-            image = R.drawable.ic_dev_productivity
+            image = R.drawable.ic_add_to_cart
         )
     )
 }
