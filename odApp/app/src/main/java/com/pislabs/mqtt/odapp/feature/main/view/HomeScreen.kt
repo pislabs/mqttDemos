@@ -23,6 +23,8 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,6 +38,7 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -84,6 +87,7 @@ import com.pislabs.mqtt.odapp.core.ui.component.title.TitleWithLine
 import com.pislabs.mqtt.odapp.R
 import com.pislabs.mqtt.odapp.feature.main.component.CommonScaffold
 import com.pislabs.mqtt.odapp.feature.main.component.FlashSaleItem
+import com.pislabs.mqtt.odapp.feature.main.model.TopAppBarAction
 import com.pislabs.mqtt.odapp.feature.main.viewmodel.HomeViewModel
 import kotlin.collections.chunked
 import kotlin.collections.find
@@ -599,23 +603,50 @@ private fun HomeTopAppBar(
             }
         },
         actions = {
-            IconButton(
-                onClick = toGitHubPage,
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .size(27.dp)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_add_circle),
-                    contentDescription = null,
-                )
-            }
+            HomeTopAppDropDown()
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.background,
             scrolledContainerColor = MaterialTheme.colorScheme.background
         )
     )
+}
+
+
+@Composable
+private fun HomeTopAppDropDown() {
+    val isExpanded = remember { mutableStateOf(false) }
+
+    Box {
+        IconButton(
+            onClick = {
+                isExpanded.value = true
+            },
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+                .size(27.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_add_circle),
+                contentDescription = null,
+            )
+        }
+        DropdownMenu(
+            expanded = isExpanded.value,
+            onDismissRequest = {
+                isExpanded.value = false
+            }
+        ) {
+            TopAppBarAction.entries.forEachIndexed { index, it ->
+                DropdownMenuItem(text = {
+                    Text(text = it.label)
+                }, onClick = {
+                    isExpanded.value = false
+                    it.action()
+                })
+            }
+        }
+    }
 }
 
 /**
