@@ -13,16 +13,17 @@ import com.pislabs.mqtt.odapp.core.model.entity.Coupon
 import com.pislabs.mqtt.odapp.core.model.entity.Goods
 import com.pislabs.mqtt.odapp.core.model.entity.Home
 import com.pislabs.mqtt.odapp.core.model.request.GoodsSearchRequest
-import com.pislabs.mqtt.odapp.core.model.request.ReceiveCouponRequest
 import com.pislabs.mqtt.odapp.core.model.response.NetworkPageData
 import com.pislabs.mqtt.odapp.core.model.response.NetworkResponse
-import com.pislabs.mqtt.odapp.core.util.toast.ToastUtils
 import com.pislabs.mqtt.odapp.navigation.AppNavigator
 import com.pislabs.mqtt.odapp.navigation.routes.AuthRoutes
 import com.pislabs.mqtt.odapp.navigation.routes.CommonRoutes
 //import com.pislabs.mqtt.odapp.navigation.routes.GoodsRoutes
 import com.pislabs.mqtt.odapp.core.network.result.ResultHandler
 import com.pislabs.mqtt.odapp.core.network.result.asResult
+import com.pislabs.mqtt.odapp.core.util.toast.ToastUtils
+import com.pislabs.mqtt.odapp.feature.common.view.ScanRoute
+import com.pislabs.mqtt.odapp.feature.main.model.AppBarAction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,7 +32,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import kotlin.collections.filter
 import kotlin.collections.isNotEmpty
-import kotlin.collections.joinToString
 import kotlin.collections.map
 
 /**
@@ -130,6 +130,22 @@ class HomeViewModel @Inject constructor(
         _isRefreshing.value = true
         currentPage = 1
         loadHomeData()
+    }
+
+    /**
+     * 触发AppBar活动
+     */
+    fun onAppBarAction(action: AppBarAction) {
+        when(action) {
+            AppBarAction.SCAN -> toScanPage()
+        }
+    }
+
+    /**
+     * 跳转扫码页
+     */
+    fun toScanPage() {
+        navigate(CommonRoutes.Scan, null)
     }
 
     /**

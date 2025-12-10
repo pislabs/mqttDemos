@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--访问网络权限-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--摄像头权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--闪光灯权限-->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!--震动权限-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--录音权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".app.Application"

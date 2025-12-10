@@ -3,6 +3,7 @@ package com.pislabs.mqtt.odapp.app
 import android.app.Application
 import android.content.res.Configuration
 import com.pislabs.mqtt.odapp.BuildConfig
+import com.pislabs.mqtt.odapp.core.common.manager.AppManager
 import com.pislabs.mqtt.odapp.core.data.state.AppState
 import com.pislabs.mqtt.odapp.core.util.log.LogUtils
 import com.pislabs.mqtt.odapp.core.util.storage.MMKVUtils
@@ -24,6 +25,9 @@ class Application : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        initAppManager()
+
         initToast()
         initLog()
         initMMKV()
@@ -31,6 +35,13 @@ class Application : Application() {
         // 由于 appState 依赖 MMKV
         // 所以等待 MMKV 初始化完成以后再初始化 AppState
         appState.initialize()
+    }
+
+    /**
+     * 初始化应用管理
+     */
+    private fun initAppManager() {
+        AppManager.init(this)
     }
 
     /**

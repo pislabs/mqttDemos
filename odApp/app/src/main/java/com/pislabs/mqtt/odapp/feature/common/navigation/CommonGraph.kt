@@ -11,8 +11,9 @@ import androidx.navigation.NavHostController
  * @author Joker.X
  */
 fun NavGraphBuilder.commonGraph(navController: NavHostController) {
-//    aboutScreen()
     webScreen()
+    scanScreen()
+//    aboutScreen()
 //    settingsScreen()
 //    userAgreementScreen()
 //    privacyPolicyScreen()

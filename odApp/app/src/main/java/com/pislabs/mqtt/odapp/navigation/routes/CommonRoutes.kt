@@ -9,6 +9,14 @@ import kotlinx.serialization.Serializable
  */
 object CommonRoutes {
     /**
+     * 扫码路由
+     *
+     * @author Joker.X
+     */
+    @Serializable
+    data object Scan
+
+    /**
      * 关于我们路由
      *
      * @author Joker.X

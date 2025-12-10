@@ -44,6 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -87,7 +88,7 @@ import com.pislabs.mqtt.odapp.core.ui.component.title.TitleWithLine
 import com.pislabs.mqtt.odapp.R
 import com.pislabs.mqtt.odapp.feature.main.component.CommonScaffold
 import com.pislabs.mqtt.odapp.feature.main.component.FlashSaleItem
-import com.pislabs.mqtt.odapp.feature.main.model.TopAppBarAction
+import com.pislabs.mqtt.odapp.feature.main.model.AppBarAction
 import com.pislabs.mqtt.odapp.feature.main.viewmodel.HomeViewModel
 import kotlin.collections.chunked
 import kotlin.collections.find
@@ -139,8 +140,8 @@ internal fun HomeRoute(
         toGoodsDetail = viewModel::toGoodsDetail,
         toGoodsCategory = viewModel::toGoodsCategoryPage,
         toFlashSalePage = viewModel::toFlashSalePage,
-        toGitHubPage = viewModel::toGitHubPage,
         toAboutPage = viewModel::toAboutPage,
+        onAppBarAction = viewModel::onAppBarAction,
         onShowCouponModal = viewModel::showCouponModal,
         onHideCouponModal = viewModel::hideCouponModal,
         onCouponReceive = viewModel::receiveCoupon,
@@ -192,8 +193,8 @@ internal fun HomeScreen(
     toGoodsDetail: (Long) -> Unit = {},
     toGoodsCategory: (Long) -> Unit = {},
     toFlashSalePage: () -> Unit = {},
-    toGitHubPage: () -> Unit = {},
     toAboutPage: () -> Unit = {},
+    onAppBarAction: (AppBarAction) -> Unit = {},
     onShowCouponModal: () -> Unit = {},
     onHideCouponModal: () -> Unit = {},
     onCouponReceive: (Coupon) -> Unit = {},
@@ -208,8 +209,8 @@ internal fun HomeScreen(
                 sharedTransitionScope = sharedTransitionScope,
                 animatedContentScope = animatedContentScope,
                 toGoodsSearch = toGoodsSearch,
-                toGitHubPage = toGitHubPage,
-                toAboutPage = toAboutPage
+                toAboutPage = toAboutPage,
+                onAppBarAction = onAppBarAction,
             )
         },
         scrollBehavior = scrollBehavior
@@ -231,7 +232,6 @@ internal fun HomeScreen(
                 toGoodsDetail = toGoodsDetail,
                 toGoodsCategory = toGoodsCategory,
                 toFlashSalePage = toFlashSalePage,
-                toGitHubPage = toGitHubPage,
                 onShowCouponModal = onShowCouponModal
             )
         }
@@ -282,7 +282,6 @@ private fun HomeContentView(
     toGoodsDetail: (Long) -> Unit,
     toGoodsCategory: (Long) -> Unit,
     toFlashSalePage: () -> Unit,
-    toGitHubPage: () -> Unit,
     onShowCouponModal: () -> Unit = {}
 ) {
 
@@ -543,9 +542,9 @@ private fun HomeTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior,
     sharedTransitionScope: SharedTransitionScope? = null,
     animatedContentScope: AnimatedContentScope? = null,
+    onAppBarAction: (AppBarAction) -> Unit,
     toGoodsSearch: () -> Unit,
-    toGitHubPage: () -> Unit,
-    toAboutPage: () -> Unit
+    toAboutPage: () -> Unit,
 ) {
     TopAppBar(
         scrollBehavior = scrollBehavior,
@@ -603,7 +602,7 @@ private fun HomeTopAppBar(
             }
         },
         actions = {
-            HomeTopAppDropDown()
+            HomeTopAppDropDown(onAppBarAction = onAppBarAction)
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.background,
@@ -614,7 +613,11 @@ private fun HomeTopAppBar(
 
 
 @Composable
-private fun HomeTopAppDropDown() {
+private fun HomeTopAppDropDown(
+    onAppBarAction: (AppBarAction) -> Unit,
+) {
+    val context = LocalContext.current
+
     val isExpanded = remember { mutableStateOf(false) }
 
     Box {
@@ -637,12 +640,12 @@ private fun HomeTopAppDropDown() {
                 isExpanded.value = false
             }
         ) {
-            TopAppBarAction.entries.forEachIndexed { index, it ->
+            AppBarAction.entries.forEach { it ->
                 DropdownMenuItem(text = {
                     Text(text = it.label)
                 }, onClick = {
                     isExpanded.value = false
-                    it.action()
+                    onAppBarAction(it)
                 })
             }
         }

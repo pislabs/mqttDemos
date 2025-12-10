@@ -1,6 +1,6 @@
 package com.pislabs.mqtt.odapp.feature.main.model
 
-import com.pislabs.mqtt.odapp.core.util.toast.ToastUtils
+import android.content.Context
 
 /**
  * 顶级AppBar活动
@@ -9,12 +9,10 @@ import com.pislabs.mqtt.odapp.core.util.toast.ToastUtils
  * @param value action 值
  * @param action 活动方法
  */
-enum class TopAppBarAction (
+enum class AppBarAction (
     val label: String,
     val value: Int,
-    val action: () -> Unit
+    val action: (context: Context) -> Unit
 ) {
-    SCAN("扫一扫", 1, {
-        ToastUtils.show("调用扫一扫功能");
-    })
+    SCAN("扫一扫", 1, {})
 }

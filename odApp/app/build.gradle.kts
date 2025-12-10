@@ -123,6 +123,14 @@ dependencies {
     // https://airbnb.io/lottie/#/android-compose
     implementation(libs.lottie.compose)
 
+    // 扫码功能
+    implementation(libs.camera.core)
+    implementation(libs.camera.camera2)
+    implementation(libs.camera.compose)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.zxing)
+    implementation(libs.mlkit)
+
     // 通过OkHttp的拦截器机制
     // 实现在应用通知栏显示网络请求功能
     // https://github.com/ChuckerTeam/chucker
