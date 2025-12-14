@@ -51,6 +51,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.pislabs.mqtt.odapp.core.common.base.state.BaseNetWorkListUiState
 import com.pislabs.mqtt.odapp.core.common.base.state.LoadMoreState
 import com.pislabs.mqtt.odapp.core.designsystem.component.VerticalList
@@ -86,10 +87,12 @@ import com.pislabs.mqtt.odapp.core.ui.component.text.AppText
 import com.pislabs.mqtt.odapp.core.ui.component.text.TextType
 import com.pislabs.mqtt.odapp.core.ui.component.title.TitleWithLine
 import com.pislabs.mqtt.odapp.R
+import com.pislabs.mqtt.odapp.feature.common.results.ScanResultKey
 import com.pislabs.mqtt.odapp.feature.main.component.CommonScaffold
 import com.pislabs.mqtt.odapp.feature.main.component.FlashSaleItem
 import com.pislabs.mqtt.odapp.feature.main.model.AppBarAction
 import com.pislabs.mqtt.odapp.feature.main.viewmodel.HomeViewModel
+import com.pislabs.mqtt.odapp.navigation.extension.observeResult
 import kotlin.collections.chunked
 import kotlin.collections.find
 import kotlin.collections.forEach
@@ -109,7 +112,8 @@ import kotlin.let
 internal fun HomeRoute(
     sharedTransitionScope: SharedTransitionScope? = null,
     animatedContentScope: AnimatedContentScope? = null,
-    viewModel: HomeViewModel = hiltViewModel()
+    navController: NavController? = null,
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     // 网络请求UI状态
     val uiState by viewModel.uiState.collectAsState()
@@ -147,6 +151,11 @@ internal fun HomeRoute(
         onCouponReceive = viewModel::receiveCoupon,
         onRetry = viewModel::loadHomeData
     )
+
+    // 使用类型安全的 NavigationResultKey 监听地址选择结果
+    navController?.observeResult(ScanResultKey) { text ->
+        viewModel.onAppBarScanResult(text)
+    }
 }
 
 /**

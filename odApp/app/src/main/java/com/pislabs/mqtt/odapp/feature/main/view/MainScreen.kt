@@ -21,6 +21,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.pislabs.mqtt.odapp.core.designsystem.theme.AppTheme
 import com.pislabs.mqtt.odapp.feature.main.component.BottomNavigationBar
 import com.pislabs.mqtt.odapp.feature.main.model.TopLevelDestination
@@ -40,7 +41,9 @@ import kotlinx.coroutines.launch
 internal fun MainRoute(
     sharedTransitionScope: SharedTransitionScope,
     animatedContentScope: AnimatedContentScope,
-    viewModel: MainViewModel = hiltViewModel()
+    navController: NavController,
+    viewModel: MainViewModel = hiltViewModel(),
+
 ) {
     // 当前页面索引
     val currentPageIndex by viewModel.currentPageIndex.collectAsState()
@@ -48,6 +51,7 @@ internal fun MainRoute(
     MainScreen(
         sharedTransitionScope = sharedTransitionScope,
         animatedContentScope = animatedContentScope,
+        navController = navController,
         currentPageIndex = currentPageIndex,
         onPageChanged = viewModel::updatePageIndex,
         onNavigationItemSelected = viewModel::updateDestination
@@ -70,6 +74,7 @@ internal fun MainRoute(
 internal fun MainScreen(
     sharedTransitionScope: SharedTransitionScope? = null,
     animatedContentScope: AnimatedContentScope? = null,
+    navController: NavController? = null,
     currentPageIndex: Int = 0,
     onPageChanged: (Int) -> Unit = {},
     onNavigationItemSelected: (Int) -> Unit = {}
@@ -113,7 +118,8 @@ internal fun MainScreen(
             pageState = pageState,
             paddingValues = paddingValues,
             sharedTransitionScope = sharedTransitionScope,
-            animatedContentScope = animatedContentScope
+            animatedContentScope = animatedContentScope,
+            navController = navController
         )
     }
 }
@@ -134,6 +140,7 @@ private fun MainScreenContentView(
     paddingValues: PaddingValues,
     sharedTransitionScope: SharedTransitionScope? = null,
     animatedContentScope: AnimatedContentScope? = null,
+    navController: NavController? = null,
 ) {
     HorizontalPager(
         state = pageState,
@@ -143,7 +150,8 @@ private fun MainScreenContentView(
         when (page) {
             0 -> HomeRoute(
                 sharedTransitionScope = sharedTransitionScope,
-                animatedContentScope = animatedContentScope
+                animatedContentScope = animatedContentScope,
+                navController = navController
             )
 
 //            1 -> CategoryRoute()
@@ -166,6 +174,6 @@ private fun MainScreenContentView(
 @Composable
 fun MainScreenPreview() {
     AppTheme {
-        MainScreen()
+        MainScreen(null)
     }
 }

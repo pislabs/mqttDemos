@@ -135,6 +135,9 @@ zxingLite = "2.4.0"
 camerax = "1.5.2"
 mlkit = "17.3.0"
 
+# ui相关版本 参考：https://google.github.io/accompanist/systemuicontroller/
+systemuicontroller = "0.36.0"
+
 # mqtt相关版本
 mqttv3="1.2.5"
 jetbrainsKotlinJvm = "2.2.21"
@@ -211,6 +214,8 @@ mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }
 
 # 动画相关库
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
+# 系统UI
+accompanist-systemuicontroller = { group = "com.google.accompanist", name="accompanist-systemuicontroller", version.ref="systemuicontroller" }
 
 # 生成/解析一维码和二维码工具
 camera-core = { group = "androidx.camera", name="camera-core", version.ref="camerax" }

@@ -14,7 +14,7 @@ class MlQrcodeAdapter(private val client: BarcodeScanner = BarcodeScanning.getCl
         client.process(InputImage.fromBitmap(bitmap, 0)).addOnSuccessListener { list ->
             if (list.isNotEmpty()) {
                 list[0].rawValue?.takeUnless { it.isEmpty() }?.also {
-                    result.accept("mlkit scan result is $it")
+                    result.accept(it)
                 }
             }
         }

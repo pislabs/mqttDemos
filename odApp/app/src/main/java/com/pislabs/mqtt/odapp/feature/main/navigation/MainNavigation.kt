@@ -2,6 +2,7 @@ package com.pislabs.mqtt.odapp.feature.main.navigation
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.pislabs.mqtt.odapp.feature.main.view.MainRoute
@@ -14,8 +15,8 @@ import com.pislabs.mqtt.odapp.navigation.routes.MainRoutes
  * @author Joker.X
  */
 @OptIn(ExperimentalSharedTransitionApi::class)
-fun NavGraphBuilder.mainScreen(sharedTransitionScope: SharedTransitionScope) {
+fun NavGraphBuilder.mainScreen(sharedTransitionScope: SharedTransitionScope, navController: NavController) {
     composable<MainRoutes.Main> {
-        MainRoute(sharedTransitionScope, this@composable)
+        MainRoute(sharedTransitionScope, this@composable, navController = navController)
     }
 }

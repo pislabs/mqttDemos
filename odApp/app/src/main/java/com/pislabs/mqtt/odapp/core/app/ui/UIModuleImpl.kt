@@ -1,19 +1,18 @@
-package com.pislabs.mqtt.odapp.core.common.manager
+package com.pislabs.mqtt.odapp.core.app.ui
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.ViewCompat
+import com.pislabs.mqtt.odapp.core.app.module.BaseModule
 import com.pislabs.mqtt.odapp.core.util.log.LogUtils
 import java.util.Collections
 import java.util.LinkedList
 
-/**
- * 应用管理器，获取系统应用相关服务
- */
-object AppManager {
-    private const val TAG = "AppManager"
-
-    private lateinit var mApplication: Application
+class UIModuleImpl(application: Application) : BaseModule<UIModule>(application), UIModule {
+    private val TAG = "UIModuleImpl"
 
     /**
      * 维护Activity 的list
@@ -21,21 +20,13 @@ object AppManager {
     private val mActivityList = Collections.synchronizedList<Activity>(LinkedList())
 
     /**
-     * 当前应用
-     */
-    val application: Application
-        get() {
-            return this.mApplication
-        }
-
-    /**
      * 初始化
      */
-    fun init(application: Application) {
-        this.mApplication = application
-
+    override fun onInit() {
         registerActivityListener()
     }
+
+    // region Activity Stack
 
     /**
      * @return 获取当前最顶部activity的实例
@@ -88,7 +79,7 @@ object AppManager {
      * 注册Activity Listener
      */
     private fun registerActivityListener() {
-        this.mApplication.registerActivityLifecycleCallbacks(object :Application.ActivityLifecycleCallbacks{
+        this.mApplication.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks{
             override fun onActivityCreated(
                 activity: Activity,
                 savedInstanceState: Bundle?
@@ -142,10 +133,13 @@ object AppManager {
         mActivityList.remove(activity)
     }
 
+    // endregion
+
     /**
-     * 获取系统服务
+     * 设置状态栏颜色
      */
-    fun getSystemService(name: String): Any {
-        return application.getSystemService(name)
+    @Composable
+    override fun setStatusBarColor(isLightMode: Boolean) {
+        ViewCompat.getWindowInsetsController(LocalView.current)?.isAppearanceLightStatusBars = !isLightMode
     }
 }

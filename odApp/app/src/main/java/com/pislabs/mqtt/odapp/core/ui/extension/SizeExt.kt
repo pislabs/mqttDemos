@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 fun Dp.toPx(): Float = this.value * Resources.getSystem().displayMetrics.density
 
 @Stable
-fun Int.pxToDp(): Float = (this / Resources.getSystem().displayMetrics.density)
+fun Int.pxToDp(): Dp = (this / Resources.getSystem().displayMetrics.density).dp
 
 @Stable
-fun Float.pxToDp(): Float = (this / Resources.getSystem().displayMetrics.density)
+fun Float.pxToDp(): Dp = (this / Resources.getSystem().displayMetrics.density).dp

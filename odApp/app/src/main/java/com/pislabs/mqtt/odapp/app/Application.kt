@@ -3,7 +3,7 @@ package com.pislabs.mqtt.odapp.app
 import android.app.Application
 import android.content.res.Configuration
 import com.pislabs.mqtt.odapp.BuildConfig
-import com.pislabs.mqtt.odapp.core.common.manager.AppManager
+import com.pislabs.mqtt.odapp.core.app.App
 import com.pislabs.mqtt.odapp.core.data.state.AppState
 import com.pislabs.mqtt.odapp.core.util.log.LogUtils
 import com.pislabs.mqtt.odapp.core.util.storage.MMKVUtils
@@ -41,7 +41,7 @@ class Application : Application() {
      * 初始化应用管理
      */
     private fun initAppManager() {
-        AppManager.init(this)
+        App.init(this)
     }
 
     /**

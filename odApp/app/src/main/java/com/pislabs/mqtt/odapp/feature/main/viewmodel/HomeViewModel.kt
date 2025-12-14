@@ -52,7 +52,6 @@ class HomeViewModel @Inject constructor(
     private val goodsRepository: GoodsRepository,
     private val couponRepository: CouponRepository
 ) : BaseNetWorkListViewModel<Goods>(navigator, appState) {
-
     /**
      * 页面数据
      */
@@ -146,6 +145,13 @@ class HomeViewModel @Inject constructor(
      */
     fun toScanPage() {
         navigate(CommonRoutes.Scan, null)
+    }
+
+    /**
+     * 二维码扫码结果
+     */
+    fun onAppBarScanResult(text: String) {
+        ToastUtils.show(text)
     }
 
     /**

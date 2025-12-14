@@ -123,6 +123,9 @@ dependencies {
     // https://airbnb.io/lottie/#/android-compose
     implementation(libs.lottie.compose)
 
+    // ui处理(已过期暂不使用)
+//    implementation(libs.accompanist.systemuicontroller)
+
     // 扫码功能
     implementation(libs.camera.core)
     implementation(libs.camera.camera2)

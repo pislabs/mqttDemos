@@ -1,13 +1,14 @@
 package com.pislabs.mqtt.odapp.core.util.hardware
 
 import android.content.Context
-import android.hardware.Camera
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
-import com.pislabs.mqtt.odapp.core.common.manager.AppManager
+import com.pislabs.mqtt.odapp.core.app.App
 import com.pislabs.mqtt.odapp.core.util.permission.PermissionUtils
 
-
+/**
+ * TODO：待处理
+ */
 object CameraUtils {
     /**
      * 获取摄像头管理器
@@ -15,8 +16,8 @@ object CameraUtils {
     fun getCameraManager(): CameraManager? {
         var manager: CameraManager? = null
 
-        PermissionUtils.requestCameraPermission(AppManager.application) {
-            manager = AppManager.getSystemService(Context.CAMERA_SERVICE) as CameraManager?
+        PermissionUtils.requestCameraPermission(App.application) {
+            manager = App.getSystemService(Context.CAMERA_SERVICE) as CameraManager?
         }
 
         return manager
@@ -65,9 +66,8 @@ object CameraUtils {
             return ""
         }
 
-
         val chara = manager.getCameraCharacteristics(cameraId)
-
+        val flashAvailable = chara.get<Boolean>(CameraCharacteristics.FLASH_INFO_AVAILABLE)
 
         return cameraId
     }

@@ -27,7 +27,7 @@ class ZxingQrcodeAdapter(private val reader: MultiFormatReader = MultiFormatRead
                     )
                 ).also {
                     if (it.text.isNotEmpty()) {
-                        result.accept("zxing scan result is ${it.text}")
+                        result.accept(it.text)
                     }
                 }
             }
